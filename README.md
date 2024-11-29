@@ -21,7 +21,7 @@ Dependencies:
 Getting Started:
 ----------------
 1. Clone the repository:
-git clone https://github.com/your-repo-name/kv-store-api.git
+git clone https://github.com/Gokul4reaL/Strivelabs-Backend-NodeJS.git
 
 
 2. Navigate to the project folder:
