@@ -37,37 +37,51 @@ npx ts-node src/server.ts
 For testing:
 npx jest
 
+Note: If the table is not getting created automatically, use the query given below to create the table manually 
+
+CREATE TABLE kv_store (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  `key` VARCHAR(32) NOT NULL UNIQUE,
+  value JSON NOT NULL,
+  ttl INT,
+  expiry BIGINT,
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
 The API will be running at http://localhost:3000.
 
 # API Endpoints:
 
+Scenario 1: Successful Key Value Creation
 Method: POST
 URL: /api/kv
 Body: { "key": "newKey", "value": {"username": "user1", "age": 30}, "ttl": 3600 }
 Response: {"message": "Key-Value pair created successfully"}
-Scenario 2: Read Key that Exists
 
+Scenario 2: Read Key that Exists
 Method: GET
 URL: /api/kv/newKey
 Response: {"key": "newKey", "value": {"username": "user1", "age": 30}}
-Scenario 3: Read Key that Doesn't Exist
 
+Scenario 3: Read Key that Doesn't Exist
 Method: GET
 URL: /api/kv/nonExistentKey
 Response: {"error": "Key not found"}
-Scenario 4: Key Expiry
 
+Scenario 4: Key Expiry
 Method: POST
 URL: /api/kv
 Body: { "key": "tempKey", "value": {"name": "Temp"}, "ttl": 5 }
 Response (after 5 seconds): {"error": "Key has expired"}
-Scenario 5: Delete Existing Key
 
+Scenario 5: Delete Existing Key
 Method: DELETE
 URL: /api/kv/newKey
 Response: {"message": "Key deleted successfully"}
-Scenario 6: Batch Create
 
+Scenario 6: Batch Create
 Method: POST
 URL: /api/kv/batch
 
