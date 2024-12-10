@@ -1,14 +1,13 @@
-import { Sequelize, Op } from 'sequelize';
+import { Op } from 'sequelize';
 import KVStore from '../models/kvStoreModel';
 
 const cleanupExpiredKeys = async () => {
   try {
     const now = Date.now();
-    // Use Op to compare expiry field with the current time
     await KVStore.destroy({
       where: {
         expiry: {
-          [Op.lte]: now, // Compare expiry field with the current timestamp
+          [Op.lte]: now,
         },
       },
     });
@@ -18,7 +17,5 @@ const cleanupExpiredKeys = async () => {
   }
 };
 
-// Run cleanup every 30 minutes
 setInterval(cleanupExpiredKeys, 30 * 60 * 1000);
-
 export default cleanupExpiredKeys;

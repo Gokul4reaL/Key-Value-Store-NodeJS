@@ -1,7 +1,7 @@
 import express from 'express';
 import sequelize from './config/database';
 import kvStoreRoutes from './routes/kvStoreRoutes';
-import cleanupExpiredKeys from './services/cleanUpService';
+import cleanupExpiredKeys from './services/cleanupService';
 
 const app = express();
 const port = 3000;
@@ -12,7 +12,7 @@ app.use(kvStoreRoutes);
 sequelize.sync({ force: true })
   .then(() => {
     console.log('Database & tables created!');
-    cleanupExpiredKeys(); // Initial cleanup on server startup
+    cleanupExpiredKeys();
     app.listen(port, () => {
       console.log(`Server running at http://localhost:${port}`);
     });

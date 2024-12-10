@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize('mysql://root:root@localhost:3306/kvstore', {
+const sequelize = new Sequelize('kvstore', 'root', 'root', {
+    host: 'localhost',
+    dialect: 'mysql',
     logging: console.log, // Log all SQL queries
 });
 
