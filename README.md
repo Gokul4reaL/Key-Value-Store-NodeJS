@@ -101,6 +101,10 @@ The server will still be available at `http://localhost:3000`.
 
 Creates a new key-value pair for a tenant.
 
+**Request Headers:**
+
+- `x-tenant-id`: The tenant ID to retrieve the key for.
+
 **Request Body:**
 
 ```json
@@ -165,6 +169,10 @@ Deletes a specific key-value pair.
 ### 4. **Batch Create Key-Value Pairs** (`POST /api/kv/batch`)
 
 Creates multiple key-value pairs for a tenant.
+
+**Request Headers:**
+
+- `x-tenant-id`: The tenant ID to retrieve the key for.
 
 **Request Body:**
 
