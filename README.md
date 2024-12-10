@@ -103,7 +103,7 @@ Creates a new key-value pair for a tenant.
 
 **Request Headers:**
 
-- `x-tenant-id`: The tenant ID to retrieve the key for.
+- `x-tenant-id`: The tenant ID to create the key for.
 
 **Request Body:**
 
@@ -172,7 +172,7 @@ Creates multiple key-value pairs for a tenant.
 
 **Request Headers:**
 
-- `x-tenant-id`: The tenant ID to retrieve the key for.
+- `x-tenant-id`: The tenant ID to create the key for.
 
 **Request Body:**
 
