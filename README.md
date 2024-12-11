@@ -73,6 +73,23 @@ npx sequelize-cli db:migrate
 
 This will create the necessary tables in the `kv_store_db` database.
 
+Note : If the table is not created properly, use the MySQL query given below and create the table in your required database 
+
+```bash
+CREATE TABLE kv_store (
+  id INT AUTO_INCREMENT PRIMARY KEY,                      -- Primary key for the table
+  tenantId VARCHAR(255) NOT NULL,                          -- Tenant ID to differentiate data for each tenant
+  `key` VARCHAR(32) NOT NULL,                              -- Key field, 32 chars max (as per the validation)
+  value JSON NOT NULL,                                     -- JSON value field
+  ttl INT,                                                 -- Time-to-live for the key (optional)
+  expiry BIGINT,                                           -- Expiry time (timestamp when key will expire)
+  createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,            -- Automatically set when a record is created
+  updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- Automatically set when a record is updated
+  UNIQUE KEY unique_key_per_tenant (tenantId, `key`),      -- Ensures that each key is unique per tenant
+  INDEX tenant_idx (tenantId)                              -- Index for tenantId for fast queries by tenant
+);
+```
+
 ### 5. Start the Server
 
 You can now start the server using the following command:
