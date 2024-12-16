@@ -19,7 +19,7 @@ You can download and install MySQL from [here](https://dev.mysql.com/downloads/)
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/Gokul4reaL/Strivelabs-Backend-NodeJS.git
+git clone https://github.com/Gokul4reaL/Key-Value-Store-NodeJS.git
 cd Strivelabs-Backend-NodeJS
 ```
 
